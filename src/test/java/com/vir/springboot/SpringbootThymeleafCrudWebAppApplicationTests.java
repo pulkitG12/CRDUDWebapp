@@ -20,7 +20,7 @@ class SpringbootThymeleafCrudWebAppApplicationTests {
 	EmployeeRepository employeeRepository;
 
 	@Test
-	public void testCreateEmployee()
+	void testCreateEmployee()
 	{
 		Employee employee=new Employee();
 		employee.setFirstName("Kartik");
@@ -31,14 +31,14 @@ class SpringbootThymeleafCrudWebAppApplicationTests {
 	}
 
 	@Test
-	public void readAllEmployee()
+	void readAllEmployee()
 	{
 		List<Employee> employeeList=employeeRepository.findAll();
-		assertThat(employeeList.size()).isGreaterThan(0);
+		assertThat(employeeList.size()).isPositive();
 	}
 
 	@Test
-	public void testSingleEmployee()
+	void testSingleEmployee()
 	{
 		Optional<Employee> employee=employeeRepository.findById(Long.valueOf(4));
 		Employee employee1=null;
@@ -50,7 +50,7 @@ class SpringbootThymeleafCrudWebAppApplicationTests {
 	}
 
 	@Test
-	public void testUpdateEmployee()
+	void testUpdateEmployee()
 	{
 		Employee employee=employeeRepository.findByFirstName("Mahima").get(0);
 		employee.setLastName("Goel");
@@ -58,7 +58,7 @@ class SpringbootThymeleafCrudWebAppApplicationTests {
 		assertThat(employeeRepository.findByFirstName("Mahima").get(0).getLastName()).isEqualTo("Goel");
 	}
 	@Test
-	public void testDeleteEmployee()
+	void testDeleteEmployee()
 		{
 			employeeRepository.deleteById(8L);
 			assertThat(employeeRepository.existsById(8L)).isFalse();
