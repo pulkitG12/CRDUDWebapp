@@ -14,4 +14,5 @@ public interface EmployeeRepository extends JpaRepository<Employee, Long>{
     @Query(value="SELECT e from Employee e where e.firstName LIKE '%' || :keyword || '%' ")
     public List<Employee> search(@Param("keyword") String keyword);
 
+    public List<Employee> findByFirstName(String firstName);
 }
